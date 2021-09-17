@@ -13,11 +13,13 @@ namespace Laba_1.Views.CatClicker
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CatClickerPage : ContentPage
 	{
+		private readonly CatClickerViewModel _viewModel; 
 		public CatClickerPage()
 		{
 			InitializeComponent();
 
-			this.BindingContext = new CatClickerViewModel();
+			_viewModel = new CatClickerViewModel(CatImage);
+			this.BindingContext = _viewModel;
 		}
 	}
 }

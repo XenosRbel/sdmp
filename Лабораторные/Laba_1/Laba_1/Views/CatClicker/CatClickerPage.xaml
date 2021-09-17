@@ -18,7 +18,10 @@
                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}"
                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
                          RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}">
-                <Image Source="cat.jpg" VerticalOptions="Center" HeightRequest="64"/>
+                <Image Source="cat.jpg"
+                       x:Name="CatImage"
+                       VerticalOptions="Center" 
+                       HeightRequest="64"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal"
                          RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.44}"
