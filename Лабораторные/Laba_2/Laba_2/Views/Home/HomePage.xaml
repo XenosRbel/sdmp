@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Laba_2.Views.Home.HomePage">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="DefaultProductItem">
+            <ViewCell>
+                <ViewCell.View>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Grid.Row = "0" HeightRequest="100" WidthRequest="100" Source="{Binding ImageUrl}"/>
+
+                        <StackLayout Grid.Column="1" Grid.Row = "0" 
+                                     Margin="5">
+                            <Label LineBreakMode="TailTruncation"
+                                   Text="{Binding Name}"
+                                   TextColor="White"/>
+                            <Label LineBreakMode="TailTruncation"
+                                   Text="{Binding ExtendedName}"        
+                                   TextColor="White"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label LineBreakMode="TailTruncation"
+                                   Text="{Binding Price}"        
+                                   TextColor="White"/>
+                                <Label LineBreakMode="TailTruncation"
+                                   Text="{Binding Currency}"        
+                                   TextColor="White"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </ViewCell.View>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Picker ItemsSource="{Binding FilterOptions}" 
+                    SelectedItem="{Binding SelectedFilter}" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="FillAndExpand" />
+            <StackLayout Orientation="Horizontal">
+                <Image VerticalOptions="FillAndExpand" Source="icon_search.png"/>
+                <Entry HorizontalOptions="FillAndExpand"
+                       Text="{Binding Path=SearchFilter.Property}"
+                       Placeholder="Поиск"
+                       PlaceholderColor="Olive" />
+            </StackLayout>
+            <ListView
+                ItemsSource="{Binding Items}"
+                RefreshCommand="{Binding LoadCommand}"
+                IsRefreshing="{Binding IsBusy}"
+                IsPullToRefreshEnabled="True"
+                HasUnevenRows ="True"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                SeparatorColor="Transparent"
+                ItemTemplate="{DynamicResource DefaultProductItem}"
+                AbsoluteLayout.LayoutFlags="PositionProportional">
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

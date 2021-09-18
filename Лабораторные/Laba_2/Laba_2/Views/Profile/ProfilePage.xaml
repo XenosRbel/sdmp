@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Laba_2.Views.Profile.ProfilePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image x:Name="AvatarImage" HeightRequest="100" WidthRequest="100" HorizontalOptions="FillAndExpand" />
+            <Button Text="Добавить аватар" Command="{Binding PickAvatarCommand}"/>
+            <Entry Text="{Binding Profile.Property.FirstName.Property}" Placeholder="Имя"/>
+            <Entry Text="{Binding Profile.Property.LastName.Property}" Placeholder="Фамилия"/>
+            <Entry Text="{Binding Profile.Property.PhoneNumber.Property}" Placeholder="Номер телефона"/>
+            <DatePicker Date="{Binding Profile.Property.DateOfBirth.Property}"/>
+            <Button Text="Сохранить данные" Command="{Binding SaveProfileCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,4 @@
+{
+	"OnlinerPhonesApiUrl": "https://catalog.onliner.by/sdapi/catalog.api/search/mobile?group=1",
+	"OnlinerTelescopeApiUrl": "https://catalog.onliner.by/sdapi/catalog.api/search/telescope?group=1"
+}
