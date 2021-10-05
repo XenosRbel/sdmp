@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace Laba_2.ViewModels
 {
-	internal class ProfileViewModel
+	internal class ProfileViewModel : BaseViewModel
 	{
 		private readonly string PROFILE_FOLDER = Path.Combine(FileSystem.CacheDirectory, "Profile");
 		private const string PROFILE_FILE_NAME = "profile.json";

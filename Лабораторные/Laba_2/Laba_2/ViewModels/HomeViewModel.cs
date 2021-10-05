@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -67,6 +68,8 @@ namespace Laba_2.ViewModels
 
 			LoadPhonesItems();
 			LoadTelescopesItems();
+
+			_repository.Add(_repository.Load<ProductItem>().ToList());
 		}
 
 		private void SearchFilter_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -82,8 +85,8 @@ namespace Laba_2.ViewModels
 		private void FilterItems(string searchPattern)
 		{
 			Items.ReplaceRange(AllItems.Where(a =>a.NamePrefix == SelectedFilter || SelectedFilter == "Все" && (
-			a.ExtendedName.Contains(searchPattern) || 
-			a.Name.Contains(searchPattern)
+			a.ExtendedName.ToLower().Contains(searchPattern.ToLower()) || 
+			a.Name.ToLower().Contains(searchPattern.ToLower())
 			)));
 		}
 
@@ -112,17 +115,39 @@ namespace Laba_2.ViewModels
 		private async void LoadPhonesItems()
 		{
 			var progressHandler = CreateProgressHandler();
-			var phones = await _phonesService.FetchAsync(progressHandler, _cancellationToken.Token);
+			try
+			{
+				var phones = await _phonesService.FetchAsync(progressHandler, _cancellationToken.Token);
 
-			BuildAndSaveProductItems(phones.Products);
+				BuildAndSaveProductItems(phones.Products);
+			}
+			catch (HttpRequestException ex)
+			{
+				Debug.WriteLine(ex);
+
+				_cancellationToken.Cancel();
+
+				DependencyService.Get<IToast>().Show("Ошибка подключения!");
+			}
 		}
 
 		private async void LoadTelescopesItems()
 		{
 			var progressHandler = CreateProgressHandler();
-			var telescopes = await _telescopeService.FetchAsync(progressHandler, _cancellationToken.Token);
+			try
+			{
+				var telescopes = await _telescopeService.FetchAsync(progressHandler, _cancellationToken.Token);
 
-			BuildAndSaveProductItems(telescopes.Products);
+				BuildAndSaveProductItems(telescopes.Products);
+			}
+			catch (HttpRequestException ex)
+			{
+				Debug.WriteLine(ex);
+
+				_cancellationToken.Cancel();
+
+				DependencyService.Get<IToast>().Show("Ошибка подключения!");
+			}
 		}
 
 		private void _repository_InsertCompleted(object sender)

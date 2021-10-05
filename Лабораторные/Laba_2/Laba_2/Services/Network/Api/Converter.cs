@@ -10,7 +10,8 @@ namespace Laba_2.Services.Network.Api
 		public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
 		{
 			MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-			DateParseHandling = DateParseHandling.None,
+			DateParseHandling = DateParseHandling.None,			
+			Formatting= Formatting.Indented,
 			Converters =
 			{
 				NamePrefixConverter.Singleton,

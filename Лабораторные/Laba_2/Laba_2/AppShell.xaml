@@ -3,6 +3,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:home="clr-namespace:Laba_2.Views.Home"
        xmlns:profile="clr-namespace:Laba_2.Views.Profile"
+       xmlns:about="clr-namespace:Laba_2.Views.About"
        Title="Laba_2"
        x:Class="Laba_2.AppShell">
     <Shell.Resources>
@@ -26,5 +27,6 @@
     <TabBar>
         <ShellContent Title="Home" Icon="icon_home.png" Route="HomePage" ContentTemplate="{DataTemplate home:HomePage}" />
         <ShellContent Title="Profile" Icon="icon_profile.png" ContentTemplate="{DataTemplate profile:ProfilePage}" />
+        <ShellContent Title="About" Icon="icon_about.png" ContentTemplate="{DataTemplate about:AboutPage}" />
     </TabBar>
 </Shell>

@@ -23,7 +23,6 @@ namespace Laba_2.Services.Repositories
 		public MemoryRepository()
 		{
 			_dbList = new List<object>();
-			_dbList.AddRange(Load());
 		}
 
 		public T GetById<T>(long id) where T : class, IBaseEntity
@@ -62,11 +61,19 @@ namespace Laba_2.Services.Repositories
 			File.WriteAllText(FILE_PATH, jsonString);
 		}
 
-		private IList<object> Load()
+		public IList<T> Load<T>() where T : class, IBaseEntity
 		{
-			var fileData = File.ReadAllText(FILE_PATH);
+			var fileData = string.Empty;
 
-			return JsonConvert.DeserializeObject<List<object>>(fileData, Converter.Settings);
+			if (File.Exists(FILE_PATH))
+			{
+				fileData = File.ReadAllText(FILE_PATH);
+
+				return JsonConvert.DeserializeObject<List<T>>(fileData, Converter.Settings);
+			} else
+			{
+				return new List<T>();
+			}
 		}
 
 		private IEnumerable<T> AddIndexToEntities<T>(IEnumerable<T> entities) where T : class, IBaseEntity

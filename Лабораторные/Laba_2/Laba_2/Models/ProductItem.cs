@@ -1,6 +1,6 @@
 ﻿namespace Laba_2.Models
 {
-	internal class ProductItem : IProductItem, IBaseEntity
+	public class ProductItem : IProductItem, IBaseEntity
 	{
 		public long Id { get; set; }
 

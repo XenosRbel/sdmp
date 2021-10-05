@@ -12,5 +12,6 @@ namespace Laba_2.Services.Repositories
 		void Add<T>(IEnumerable<T> entities) where T : class, IBaseEntity;
 		void Add<T>(T entity) where T : class, IBaseEntity;
 		void Save();
+		IList<T> Load<T>() where T : class, IBaseEntity;
 	}
 }

@@ -18,8 +18,11 @@ namespace Laba_2.Views.Profile
 
 			_viewModel.Profile.Property.AvatarUrl.PropertyChanged += AvatarUrl_PropertyChanged;
 
-			var stream = File.OpenRead(_viewModel.Profile.Property.AvatarUrl.Property);
-			AvatarImage.Source = ImageSource.FromStream(() => stream);
+			if (File.Exists(_viewModel.Profile.Property.AvatarUrl.Property))
+			{
+				var stream = File.OpenRead(_viewModel.Profile.Property.AvatarUrl.Property);
+				AvatarImage.Source = ImageSource.FromStream(() => stream);
+			}
 		}
 
 		private void AvatarUrl_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

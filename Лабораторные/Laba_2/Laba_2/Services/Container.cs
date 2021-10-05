@@ -29,6 +29,7 @@ namespace Laba_2.Services
 
 			_services.AddTransient<HomeViewModel>();
 			_services.AddTransient<ProfileViewModel>();
+			_services.AddTransient<AboutViewModel>();
 
 			ServiceProvider = _services.BuildServiceProvider();
 		}
