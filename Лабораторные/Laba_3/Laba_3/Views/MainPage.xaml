@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Laba_3.Views.MainPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="С возвращением," FontSize="16" Padding="0,0,0,0"/>
+                <Label Text="{Binding Profile.Property.Name.Property}" FontSize="16" Padding="0,0,0,0"/>
+            </StackLayout>
+
+            <Label Text="Как вы себя чувствуете сегодня?" FontSize="16" Padding="0,0,0,0"/>
+            <IndicatorView x:Name="indicatorView"
+                       IndicatorsShape="Square"
+                       IndicatorColor="LightGray"
+                       SelectedIndicatorColor="DarkGray"
+                       HorizontalOptions="Center"
+                       VerticalOptions="StartAndExpand"
+                       Margin="0,0,0,40" />
+            <CarouselView
+                IndicatorView="indicatorView"
+                ItemsSource="{Binding Moods}"
+                CurrentItemChangedCommand="{Binding ItemChangedCommand}"
+                CurrentItemChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=CurrentItem}"
+                >
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame HasShadow="True"
+                               BorderColor="DarkGray"
+                               CornerRadius="25"
+                               HorizontalOptions="Center">
+                                <SwipeView>
+                                    <StackLayout>
+                                        <Image Source="{Binding ImageUrl}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center" />
+                                    </StackLayout>
+                                </SwipeView>
+                            </Frame>
+                            <Label Text="{Binding Title}" 
+                                FontSize="Caption"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Frame
+                HasShadow="True"
+                BorderColor="DarkGray"
+                CornerRadius="25"
+                HorizontalOptions="Center"
+                Margin="50,20,50,20"
+                >
+                <Label Text="{Binding Recomendation.Property}" />
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -20,7 +20,11 @@ namespace Laba_2.Services
 
 			Config = config ?? throw new ArgumentNullException(nameof(config));
 
+			var liteDbRepositoryFactory = new LiteDbRepositoryFactory("product.db");
+			var repository = new LiteDbRepository(liteDbRepositoryFactory.GetRepository());
+
 			_services.AddSingleton<IRepository, MemoryRepository>();
+			_services.AddSingleton<IRepository>(repository);
 			_services.AddSingleton<IRequestService, RequestService>();
 			_services.AddSingleton<IApiService, ApiService>();
 			_services.AddSingleton<PhoneService>();

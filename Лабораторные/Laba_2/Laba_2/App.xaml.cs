@@ -1,6 +1,4 @@
 ﻿using Laba_2.Services;
-using Laba_2.Services.Repositories;
-using Laba_2.ViewModels;
 using Xamarin.Forms;
 
 namespace Laba_2

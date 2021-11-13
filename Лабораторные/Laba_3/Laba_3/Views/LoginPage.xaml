@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Laba_3.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Entry Text="{Binding Profile.Property.Email.Property}"
+                   ClearButtonVisibility="WhileEditing"
+                   Placeholder="Login"
+                   Keyboard="Email"/>
+            <Entry Text="{Binding Profile.Property.Password.Property}"
+                   ClearButtonVisibility="WhileEditing"
+                   IsPassword="True"
+                   Placeholder="Password"/>
+            <Button VerticalOptions="Center" Text="Register" Command="{Binding RegistrationCommand}"/>
+            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
