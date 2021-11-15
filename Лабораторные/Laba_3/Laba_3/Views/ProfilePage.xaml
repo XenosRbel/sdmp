@@ -1,18 +1,72 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Laba_3.Views.ProfilePage">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Laba_3.Views.ProfilePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Entry Text="{Binding Profile.Property.Name.Property}"
-                   Placeholder="Имя"/>
-            <Entry Text="{Binding Profile.Property.Email.Property}"
-                   IsReadOnly="True"
-                   Placeholder="Email"/>
-            <Entry Text="{Binding Profile.Property.Password.Property}"
-                   IsReadOnly="True"
-                   Placeholder="Пароль"/>
-            <Button Text="Сохранить данные" Command="{Binding SaveProfileCommand}"/>
-        </StackLayout>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Image Source="Rectangle 46.png" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"></Image>
+            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Orientation="Vertical">
+                    <StackLayout>
+                        <AbsoluteLayout>
+                            <Image HeightRequest="80"
+                               BackgroundColor="Transparent"
+                               Source="Logo.png"
+                               AbsoluteLayout.LayoutBounds="1,1,1,1"
+                               AbsoluteLayout.LayoutFlags="All"/>
+                            <Button TextColor="#f5f2ed"
+                                    BackgroundColor="Transparent"
+                               AbsoluteLayout.LayoutBounds="1,1,40,90"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Text="Edit"/>
+                        </AbsoluteLayout>
+                        <Image HeightRequest="100"
+                            BackgroundColor="Transparent"
+                            Source="Profile Pic.png"
+                            AbsoluteLayout.LayoutBounds="1,1,1,1"
+                            AbsoluteLayout.LayoutFlags="All" />
+                        <Label TextColor="#f5f2ed" FontAttributes="Bold" HorizontalOptions="Center" Text="{Binding Profile.Property.Email.Property}" />
+                        
+                        <StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Frame CornerRadius="100">
+                                    <Image HeightRequest="80" Source="sunset-d863fdd4.png" Aspect="AspectFill"/>
+                                </Frame>
+
+                                <Frame CornerRadius="100" Grid.Column="1" >
+                                    <Image HeightRequest="80" Source="Unknown-6.png" Aspect="AspectFill"/>
+                                </Frame>
+
+                                <Frame CornerRadius="100" Grid.Row="1" >
+                                    <Image HeightRequest="80" Source="12556223_paisagem15.png" Aspect="AspectFill"/>
+                                </Frame>
+
+                                <Frame CornerRadius="100" Grid.Row="1" Grid.Column="1" >
+                                    <Image HeightRequest="80" Source="Unknown-7.png" Aspect="AspectFill"/>
+                                </Frame>
+
+                                <Frame CornerRadius="5" 
+                                       Grid.Row="2"
+                                       Margin="20,0,20,10"
+                                       BackgroundColor="#66ab74" >
+                                    <Button Text="+"
+                                            FontSize="25"
+                                            FontAttributes="Bold"
+                                            BackgroundColor="Transparent"/>
+                                </Frame>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
+  
     </ContentPage.Content>
 </ContentPage>

@@ -25,7 +25,7 @@ namespace Laba_3.ViewModels
 
 		public ICommand ItemChangedCommand => new Command<Mood>(ItemChanged);
 
-		public IObservableObject<string> Recomendation { get; private set; }
+		public IObservableObject<IRecomendation> Recomendation { get; private set; }
 
 		public MainPageViewModel(IUserService userService)
 		{
@@ -34,7 +34,14 @@ namespace Laba_3.ViewModels
 			Profile = new ObservableObject<IProfile> { Property = _userService.Load() };
 
 			_moodSource = new List<IMood>();
-			Recomendation = new ObservableObject<string> { Property = string.Empty };
+			Recomendation = new ObservableObject<IRecomendation>
+			{ 
+				Property = new Recomendation
+				{
+					Description = string.Empty,
+					Title = string.Empty
+				}
+			};
 
 			CreateMoodsCollection();
 
@@ -69,13 +76,19 @@ namespace Laba_3.ViewModels
 		}
 
 		void ItemChanged(Mood item)
-		{	
+		{
 			PreviousMood = CurrentItem;
 			CurrentItem = item;
 			OnPropertyChanged("PreviousMood");
 			OnPropertyChanged("CurrentMood");
 
-			Recomendation.Property = Faker.Lorem.Paragraph();
+			var rnd = new Random();
+			Recomendation.Property = new Recomendation
+			{
+				Title = Faker.Lorem.Word(),
+				Description = Faker.Lorem.Sentence(6),
+				ImageUrl = $"rec_{rnd.Next(1, 3)}.png"
+			};
 		}
 	}
 }

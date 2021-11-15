@@ -19,7 +19,7 @@ namespace Laba_3
 			Container = new Container(_config);
 
 			MainPage = new AppShell();
-			Shell.Current.GoToAsync("//MainPage");
+			Shell.Current.GoToAsync("//LoginPage");
 		}
 
 		protected override void OnStart()

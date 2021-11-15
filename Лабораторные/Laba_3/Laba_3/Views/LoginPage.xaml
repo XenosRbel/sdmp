@@ -7,17 +7,61 @@
              x:Class="Laba_3.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Entry Text="{Binding Profile.Property.Email.Property}"
-                   ClearButtonVisibility="WhileEditing"
-                   Placeholder="Login"
-                   Keyboard="Email"/>
-            <Entry Text="{Binding Profile.Property.Password.Property}"
-                   ClearButtonVisibility="WhileEditing"
-                   IsPassword="True"
-                   Placeholder="Password"/>
-            <Button VerticalOptions="Center" Text="Register" Command="{Binding RegistrationCommand}"/>
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-        </StackLayout>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Image Source="Rectangle 46.png" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"></Image>
+            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             Orientation="Vertical">
+                    <StackLayout>
+                        <AbsoluteLayout>
+                            <Image HeightRequest="100"
+                               BackgroundColor="Transparent"
+                               Source="Logo.png"
+                               AbsoluteLayout.LayoutBounds="0,0,0.1,1"
+                               AbsoluteLayout.LayoutFlags="All"/>
+                        </AbsoluteLayout>
+                        <Label Text="Sing in"
+                               TextColor="#f5f2ed"
+                               FontSize="25"
+                               Margin="30,15,0,0"
+                               FontAttributes="Bold"/>
+                        <StackLayout Padding="10,0,10,0"
+                                     Margin="0,50,0,0"
+                                     VerticalOptions="Center">
+                            <Entry Text="{Binding Profile.Property.Email.Property}"
+                                   ClearButtonVisibility="WhileEditing"
+                                   Placeholder="Email"
+                                   BackgroundColor="Transparent"
+                                   TextColor="#f5f2ed"
+                                   PlaceholderColor="#f5f2ed"
+                                   Margin="20,0,20,15"
+                                   Keyboard="Email"/>
+                            <Entry Text="{Binding Profile.Property.Password.Property}"
+                                   ClearButtonVisibility="WhileEditing"
+                                   IsPassword="True"
+                                   BackgroundColor="Transparent"
+                                   TextColor="#f5f2ed"
+                                   PlaceholderColor="#f5f2ed"
+                                   Margin="20,0,20,20"
+                                   Placeholder="Password"/>
+                            <Button VerticalOptions="Center"
+                                    Text="Register"
+                                    Margin="20,0,20,0"
+                                    Background="#79988f"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    Command="{Binding RegistrationCommand}"/>
+                            <Button VerticalOptions="Center"
+                                    Text="Login"
+                                    Margin="20,0,20,0"
+                                    FontSize="Medium"
+                                    FontAttributes="Bold"
+                                    Background="#79988f"
+                                    Command="{Binding LoginCommand}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
