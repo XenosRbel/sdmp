@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controlsBehavior="clr-namespace:Laba_4.ControlsBehavior;assembly=Laba_4"
+             x:Class="Laba_4.Presentation.Views.Contacts.ContactsViewPage">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="DefaultPhone">
+            <ViewCell>
+                <ViewCell.View>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Grid.Row = "0" Source="tom.png"/>
+
+                        <StackLayout Grid.Column="1" Grid.Row = "0" 
+                                     Margin="5">
+                            <Label LineBreakMode="TailTruncation"
+                                   Text="{Binding Path=Name}"
+                                   TextColor="Black"/>
+                            <Label LineBreakMode="TailTruncation"
+                                   Text="{Binding Path=PhoneNumber}"        
+                                   TextColor="Black"/>
+                        </StackLayout>
+                    </Grid>
+                </ViewCell.View>
+            </ViewCell>
+        </DataTemplate>
+        <DataTemplate x:Key="WorkPhone">
+            <ViewCell>
+                <ViewCell.View>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Grid.Row = "0" Source="jerry.png"/>
+
+                        <StackLayout Grid.Column="1" Grid.Row = "0" 
+                                     Margin="5">
+                            <Label LineBreakMode="TailTruncation"
+                                   Text="{Binding Path=Name}"/>
+                            <Label LineBreakMode="TailTruncation"
+                                   Text="{Binding Path=PhoneNumber}"        
+                                   TextColor="DarkCyan"/>
+                        </StackLayout>
+                    </Grid>
+                </ViewCell.View>
+            </ViewCell>
+        </DataTemplate>
+        <controlsBehavior:ContactDataSelector x:Key="ContactDataSelector" 
+                                     DefaultTemplate="{StaticResource DefaultPhone}"
+                                     WorkTemplate="{StaticResource WorkPhone}"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ListView
+                ItemsSource="{Binding Path=ContactItems}"
+                RefreshCommand="{Binding LoadCommand}"
+                IsRefreshing="{Binding IsBusy}"
+                IsPullToRefreshEnabled="True"
+                HasUnevenRows ="True"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                SeparatorColor="Transparent"
+                controlsBehavior:ListViewTappedBehavior.Command="{Binding TappedCommand}"
+                ItemTemplate="{DynamicResource ContactDataSelector}"
+                AbsoluteLayout.LayoutFlags="PositionProportional">
+            </ListView>
+            <StackLayout Orientation="Horizontal"
+                         AbsoluteLayout.LayoutBounds="0.5,1,-1,-1"
+                         AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Button Text="+" 
+                        WidthRequest="50" 
+                        HeightRequest="50" 
+                        FontSize="24" 
+                        BackgroundColor="Transparent" Visual="Material"
+                        Command="{Binding AddContactCommand}"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

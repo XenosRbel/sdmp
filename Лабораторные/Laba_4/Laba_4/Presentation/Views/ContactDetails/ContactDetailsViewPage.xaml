@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Laba_4.Presentation.Views.ContactDetails.ContactDetailsViewPage">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <StackLayout HorizontalOptions="Center"
+                         RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+                <Grid Padding="5,5,5,5"
+                      VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="0.4*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Column="0" Grid.Row = "0" Source="{Binding Contact.Property.ImageUrl}"/>
+
+                    <StackLayout Grid.Column="0" Grid.Row = "1" 
+                                 Margin="5,10, 5, 5"
+                                 HorizontalOptions="CenterAndExpand">
+                        <Label LineBreakMode="TailTruncation"
+                               Text="{Binding Contact.Property.Name}"
+                               TextColor="Black"/>
+                        <Label LineBreakMode="TailTruncation"
+                               Text="{Binding Contact.Property.PhoneNumber}"        
+                               TextColor="Black"/>
+                        <Label LineBreakMode="TailTruncation"
+                               Text="{Binding Contact.Property.Region}"        
+                               TextColor="Black"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row = "2">
+                        <Button Text="Call"
+                                Margin="20, 5, 20, 0"
+                                Command="{Binding CallCommand}"/>
+
+                        <Button Text="Edit"
+                                Margin="20, 5, 20, 0"
+                                Command="{Binding EditContactCommand}"/>
+
+                        <Button Text="Remove"
+                                Margin="20, 5, 20, 0"
+                                Command="{Binding RemoveContactCommand}"/>
+                        <Button Text="Back"
+                                Command="{Binding BackCommand}" 
+                                VerticalOptions="End"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

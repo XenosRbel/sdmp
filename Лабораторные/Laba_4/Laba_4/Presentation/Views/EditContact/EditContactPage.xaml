@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Laba_4.Presentation.Views.EditContact.EditContactPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Image Source="{Binding ImageUrl}"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Name"/>
+                <Entry Placeholder="Input contact name"
+                       Text="{Binding Name, Mode=TwoWay}"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Phone number"/>
+                <Entry Placeholder="Input phone number"
+                       Text="{Binding PhoneNumber, Mode=TwoWay}"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Stats"/>
+                <Entry Placeholder="Input region"
+                       Text="{Binding Region, Mode=TwoWay}"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Phone type"/>
+                <Picker Title="Select a phone type"
+                        ItemsSource="{Binding PhoneTypes}"
+                        SelectedItem="{Binding PhoneType}"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Vk import"/>
+                <Entry Placeholder="Input user vk id"
+                       Text="{Binding VkUrl, Mode=TwoWay}"/>
+                <Button Text="Import"
+                    Command="{Binding ImportCommand}" 
+                    VerticalOptions="End"/>
+            </StackLayout>
+            <Button Text="Submit"
+                    Command="{Binding SubmitCommand}" 
+                    VerticalOptions="End"/>
+            <Button Text="Back"
+                    Command="{Binding BackCommand}" 
+                    VerticalOptions="End"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
