@@ -13,7 +13,7 @@ namespace Laba_2.Services.Repositories
 		{
 			if (string.IsNullOrWhiteSpace(fileName)) throw new ArgumentException(nameof(fileName));
 
-			var dirPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), DbDir);
+			var dirPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DbDir);
 			Directory.CreateDirectory(dirPath);
 			_dbFilePath = Path.Combine(dirPath, fileName);
 		}

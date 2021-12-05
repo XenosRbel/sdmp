@@ -337,6 +337,7 @@
       <RootProperty Name="Background" />
       <RootProperty Name="CharacterSpacing" />
       <RootProperty Name="FlowDirection" />
+      <RootProperty Name="CornerRadius" />
       <RootProperty Name="Resources" />
       <RootProperty Name="Height" />
     </RootType>
@@ -723,6 +724,7 @@
       <RootProperty Name="FlowDirection" />
       <RootProperty Name="IsEnabled" />
     </RootType>
+    <RootType FullName="Xamarin.Forms.Platform.UWP.FormsButton" />
     <RootType FullName="Xamarin.Forms.Platform.UWP.EntryCellTextBox">
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Header" />
